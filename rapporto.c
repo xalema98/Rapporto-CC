@@ -28,7 +28,7 @@ int main(){
     scelta = 1;
     while(scelta != 0){
         while(continua == 0){
-            printf("Ciao, fai il tuo rapporto in maniera semplice\n1 rilasci licenze\n2 formazioni pmz\n3 fermi\n4 inseguimenti\n5 rapine\n6 controlli sostanze\n7 controlli forestali\n0 termina\n--> ");
+            printf("Ciao, fai il tuo rapporto in maniera semplice\n1 rilasci licenze\n2 formazioni pmz\n3 fermi\n4 inseguimenti\n5 rapine\n6 controlli sostanze\n7 controlli forestali\n8 scioglimento PMZ/autoradio\n0 termina\n--> ");
             scanf("%d", &scelta);
             getchar();
             switch (scelta){
@@ -152,6 +152,18 @@ int main(){
                     rapporto1[i].esito[strcspn(rapporto1[i].esito, "\n")] = '\0';
                     i++;
                     break;
+                case 8:
+                    rapporto1[i].caso = 8;
+                    printf("Ore: ");
+                    fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
+                    rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
+                    printf("PMZ o Autoradio: ");
+                    fgets(rapporto1[i].tipo, sizeof(rapporto1[i].tipo), stdin);
+                    rapporto1[i].tipo[strcspn(rapporto1[i].tipo, "\n")] = '\0';
+                    printf("%s: ", rapporto1[i].tipo);
+                    scanf("%d", &rapporto1[i].pmz);
+                    getchar();
+                    break;
                 case 0:
                     printf("fine rapporto");
                     continua = 1;
@@ -170,9 +182,9 @@ int main(){
                 break;
             case 2:
                 if(rapporto1[j].nop == 2){
-                    printf("- Ore %s Formata PMZ %d composta da %s e %s\n", rapporto1[j].orario, rapporto1[j].pmz, rapporto1[j].nomeop1, rapporto1[j].nomeop2);
+                    printf("- Ore %s Formata %s %d composta da %s e %s\n", rapporto1[j].orario, rapporto1[i].tipo, rapporto1[j].pmz, rapporto1[j].nomeop1, rapporto1[j].nomeop2);
                 }else if(rapporto1[j].nop == 3){
-                    printf("- Ore %s Formata PMZ %d composta da %s, %s e %s\n", rapporto1[j].orario, rapporto1[j].pmz, rapporto1[j].nomeop1, rapporto1[j].nomeop2, rapporto1[j].nomeop3);
+                    printf("- Ore %s Formata %s %d composta da %s, %s e %s\n", rapporto1[j].orario, rapporto1[i].tipo, rapporto1[j].pmz, rapporto1[j].nomeop1, rapporto1[j].nomeop2, rapporto1[j].nomeop3);
                 }
                 break;
             case 3:
@@ -190,6 +202,8 @@ int main(){
             case 7:
                 printf("Reparti\n- Ore %s Controllo Zone di Caccia, Esito: %s\n", rapporto1[j].orario, rapporto1[j].esito);
                 break;
+            case 8:
+                printf("- Ore %s sciolta %s %d", rapporto1[j].orario, rapporto1[j].tipo, rapporto1[j].pmz);
         }
     }
     return 0;
