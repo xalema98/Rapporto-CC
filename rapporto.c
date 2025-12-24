@@ -27,6 +27,7 @@ int main(){
     int i = 0, j = 0;
     char motivo[20];
     scelta = 1;
+    int formaz = 0;
     while(scelta != 0){
         while(continua == 0){
             printf("Ciao, fai il tuo rapporto in maniera semplice\n1 rilasci licenze\n2 formazioni PMZ/Autoradio/Fiamma/Doppia Charlie\n3 fermi\n4 inseguimenti\n5 rapine\n6 controlli sostanze\n7 controlli forestali\n8 scioglimento PMZ/autoradio/Fiamma/Doppia Charlie\n0 termina\n--> ");
@@ -47,108 +48,131 @@ int main(){
                     i++;
                     break; 
                 case 2:
-                    rapporto1[i].caso = 2;
-                    printf("Ore: ");
-                    fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
-                    rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
-                    printf("PMZ, Autoradio, Fiamma o Doppia Charlie: ");
-                    fgets(rapporto1[i].tipo, sizeof(rapporto1[i].tipo), stdin);
-                    rapporto1[i].tipo[strcspn(rapporto1[i].tipo, "\n")] = '\0';
-                    printf("%s: ", rapporto1[i].tipo);
-                    scanf("%d", &rapporto1[i].pmz);
-                    getchar();
-                    printf("numero operatori: ");
-                    scanf("%d", &rapporto1[i].nop);
-                    getchar();
-                    do{
-                        if(rapporto1[i].nop == 2){
-                            printf("Nome operatore 1: ");
-                            fgets(rapporto1[i].nomeop1, sizeof(rapporto1[i].nomeop1), stdin);
-                            rapporto1[i].nomeop1[strcspn(rapporto1[i].nomeop1, "\n")] = '\0';
-                            printf("Nome operatore 2: ");
-                            fgets(rapporto1[i].nomeop2, sizeof(rapporto1[i].nomeop2), stdin);
-                            rapporto1[i].nomeop2[strcspn(rapporto1[i].nomeop2, "\n")] = '\0';
-                        }else if(rapporto1[i].nop == 3){
-                            printf("Nome operatore 1: ");
-                            fgets(rapporto1[i].nomeop1, sizeof(rapporto1[i].nomeop1), stdin);
-                            rapporto1[i].nomeop1[strcspn(rapporto1[i].nomeop1, "\n")] = '\0';
-                            printf("Nome operatore 2: ");
-                            fgets(rapporto1[i].nomeop2, sizeof(rapporto1[i].nomeop2), stdin);
-                            rapporto1[i].nomeop2[strcspn(rapporto1[i].nomeop2, "\n")] = '\0';
-                            printf("Nome operatore 3: ");
-                            fgets(rapporto1[i].nomeop3, sizeof(rapporto1[i].nomeop3), stdin);
-                            rapporto1[i].nomeop3[strcspn(rapporto1[i].nomeop3, "\n")] = '\0';
-                        }else if(rapporto1[i].nop == 0){
-                            printf("che reparto ha avviato la doppia charlie: ");
-                            scanf("%s", motivo);
-                            motivo[strlen(motivo)] = '\0';
-                            break;
-                        }
-                    }while(rapporto1[i].nop < 2 || rapporto1[i].nop > 3 || rapporto1[i].nop != 0);
-                    i++;
+                    if(formaz == 0){
+                        rapporto1[i].caso = 2;
+                        printf("Ore: ");
+                        fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
+                        rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
+                        printf("PMZ, Autoradio, Fiamma o Doppia Charlie: ");
+                        fgets(rapporto1[i].tipo, sizeof(rapporto1[i].tipo), stdin);
+                        rapporto1[i].tipo[strcspn(rapporto1[i].tipo, "\n")] = '\0';
+                        printf("%s: ", rapporto1[i].tipo);
+                        scanf("%d", &rapporto1[i].pmz);
+                        getchar();
+                        printf("numero operatori: ");
+                        scanf("%d", &rapporto1[i].nop);
+                        getchar();
+                        do{
+                            if(rapporto1[i].nop == 2){
+                                printf("Nome operatore 1: ");
+                                fgets(rapporto1[i].nomeop1, sizeof(rapporto1[i].nomeop1), stdin);
+                                rapporto1[i].nomeop1[strcspn(rapporto1[i].nomeop1, "\n")] = '\0';
+                                printf("Nome operatore 2: ");
+                                fgets(rapporto1[i].nomeop2, sizeof(rapporto1[i].nomeop2), stdin);
+                                rapporto1[i].nomeop2[strcspn(rapporto1[i].nomeop2, "\n")] = '\0';
+                            }else if(rapporto1[i].nop == 3){
+                                printf("Nome operatore 1: ");
+                                fgets(rapporto1[i].nomeop1, sizeof(rapporto1[i].nomeop1), stdin);
+                                rapporto1[i].nomeop1[strcspn(rapporto1[i].nomeop1, "\n")] = '\0';
+                                printf("Nome operatore 2: ");
+                                fgets(rapporto1[i].nomeop2, sizeof(rapporto1[i].nomeop2), stdin);
+                                rapporto1[i].nomeop2[strcspn(rapporto1[i].nomeop2, "\n")] = '\0';
+                                printf("Nome operatore 3: ");
+                                fgets(rapporto1[i].nomeop3, sizeof(rapporto1[i].nomeop3), stdin);
+                                rapporto1[i].nomeop3[strcspn(rapporto1[i].nomeop3, "\n")] = '\0';
+                            }else if(rapporto1[i].nop == 0){
+                                printf("che reparto ha avviato la doppia charlie: ");
+                                scanf("%s", motivo);
+                                motivo[strlen(motivo)] = '\0';
+                                break;
+                            }
+                        }while(rapporto1[i].nop < 2 || rapporto1[i].nop > 3 && rapporto1[i].nop != 0);
+                        i++;
+                        formaz = 1;
+                    }else{
+                        printf("hai già formato una pattuglia\n");
+                    }
                     break;
                 case 3:
-                    rapporto1[i].caso = 3;
-                    printf("Ore: ");
-                    fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
-                    rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
-                    printf("Veicolo: ");
-                    fgets(rapporto1[i].veicolo, sizeof(rapporto1[i].veicolo), stdin);
-                    rapporto1[i].veicolo[strcspn(rapporto1[i].veicolo, "\n")] = '\0';
-                    printf("Targa: ");
-                    fgets(rapporto1[i].targa, sizeof(rapporto1[i].targa), stdin);
-                    rapporto1[i].targa[strcspn(rapporto1[i].targa, "\n")] = '\0';
-                    printf("Nome soggetto: ");
-                    fgets(rapporto1[i].nome, sizeof(rapporto1[i].nome), stdin);
-                    rapporto1[i].nome[strcspn(rapporto1[i].nome, "\n")] = '\0';
-                    printf("Civico: ");
-                    scanf("%d", &rapporto1[i].civico);
-                    getchar();
-                    printf("Sanzioni: ");
-                    fgets(rapporto1[i].sanzioni, sizeof(rapporto1[i].sanzioni), stdin);
-                    i++;
+                    if(formaz == 1){
+                        rapporto1[i].caso = 3;
+                        printf("Ore: ");
+                        fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
+                        rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
+                        printf("Veicolo: ");
+                        fgets(rapporto1[i].veicolo, sizeof(rapporto1[i].veicolo), stdin);
+                        rapporto1[i].veicolo[strcspn(rapporto1[i].veicolo, "\n")] = '\0';
+                        printf("Targa: ");
+                        fgets(rapporto1[i].targa, sizeof(rapporto1[i].targa), stdin);
+                        rapporto1[i].targa[strcspn(rapporto1[i].targa, "\n")] = '\0';
+                        printf("Nome soggetto: ");
+                        fgets(rapporto1[i].nome, sizeof(rapporto1[i].nome), stdin);
+                        rapporto1[i].nome[strcspn(rapporto1[i].nome, "\n")] = '\0';
+                        printf("Civico: ");
+                        scanf("%d", &rapporto1[i].civico);
+                        getchar();
+                        printf("Sanzioni: ");
+                        fgets(rapporto1[i].sanzioni, sizeof(rapporto1[i].sanzioni), stdin);
+                        rapporto1[i].sanzioni[strcspn(rapporto1[i].sanzioni, "\n")] = '\0';
+                        i++;
+                    }else{
+                        printf("non hai formato nessuna pattuglia\n");
+                    }
                     break;
                 case 4:
-                    rapporto1[i].caso = 4;
-                    printf("Ore: ");
-                    fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
-                    rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
-                    printf("Veicolo: ");
-                    fgets(rapporto1[i].veicolo, sizeof(rapporto1[i].veicolo), stdin);
-                    rapporto1[i].veicolo[strcspn(rapporto1[i].veicolo, "\n")] = '\0';
-                    printf("Targa: ");
-                    fgets(rapporto1[i].targa, sizeof(rapporto1[i].targa), stdin);
-                    rapporto1[i].targa[strcspn(rapporto1[i].targa, "\n")] = '\0';
-                    printf("Civico: ");
-                    scanf("%d", &rapporto1[i].civico);
-                    getchar();
-                    printf("Esito inseguimento: ");
-                    fgets(rapporto1[i].esito, sizeof(rapporto1[i].esito), stdin);
-                    i++;
+                    if(formaz == 1){
+                        rapporto1[i].caso = 4;
+                        printf("Ore: ");
+                        fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
+                        rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
+                        printf("Veicolo: ");
+                        fgets(rapporto1[i].veicolo, sizeof(rapporto1[i].veicolo), stdin);
+                        rapporto1[i].veicolo[strcspn(rapporto1[i].veicolo, "\n")] = '\0';
+                        printf("Targa: ");
+                        fgets(rapporto1[i].targa, sizeof(rapporto1[i].targa), stdin);
+                        rapporto1[i].targa[strcspn(rapporto1[i].targa, "\n")] = '\0';
+                        printf("Civico: ");
+                        scanf("%d", &rapporto1[i].civico);
+                        getchar();
+                        printf("Esito inseguimento: ");
+                        fgets(rapporto1[i].esito, sizeof(rapporto1[i].esito), stdin);
+                        i++;
+                    }else{
+                        printf("non hai formato nessuna pattuglia\n");
+                    }
                     break;
                 case 5:
-                    rapporto1[i].caso = 5;
-                    printf("Ore: ");
-                    fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
-                    rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
-                    printf("Civico: ");
-                    scanf("%d", &rapporto1[i].civico);
-                    getchar();
-                    printf("Esito: ");
-                    fgets(rapporto1[i].esito, sizeof(rapporto1[i].esito), stdin);
-                    rapporto1[i].esito[strcspn(rapporto1[i].esito, "\n")] = '\0';
-                    i++;
+                    if(formaz == 1){
+                        rapporto1[i].caso = 5;
+                        printf("Ore: ");
+                        fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
+                        rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
+                        printf("Civico: ");
+                        scanf("%d", &rapporto1[i].civico);
+                        getchar();
+                        printf("Esito: ");
+                        fgets(rapporto1[i].esito, sizeof(rapporto1[i].esito), stdin);
+                        rapporto1[i].esito[strcspn(rapporto1[i].esito, "\n")] = '\0';
+                        i++;
+                    }else{
+                        printf("non hai formato nessuna pattuglia\n");
+                    }
                     break;
                 case 6:
-                    rapporto1[i].caso = 6;
-                    printf("Ore: ");
-                    fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
-                    rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
-                    printf("Sostanza trovata: ");
-                    fgets(rapporto1[i].sostanza, sizeof(rapporto1[i].sostanza), stdin);
-                    i++;
+                    if(formaz == 1){
+                        rapporto1[i].caso = 6;
+                        printf("Ore: ");
+                        fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
+                        rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
+                        printf("Sostanza trovata: ");
+                        fgets(rapporto1[i].sostanza, sizeof(rapporto1[i].sostanza), stdin);
+                        i++;
+                    }else{
+                        printf("non hai formato nessuna pattuglia\n");
+                    }
                     break;
                 case 7:
+                if(formaz == 1){
                     rapporto1[i].caso = 7;
                     printf("Ore: ");
                     fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
@@ -157,18 +181,25 @@ int main(){
                     fgets(rapporto1[i].esito, sizeof(rapporto1[i].esito), stdin);
                     rapporto1[i].esito[strcspn(rapporto1[i].esito, "\n")] = '\0';
                     i++;
+                    }else{
+                        printf("non hai formato nessuna pattuglia\n");
+                    }
                     break;
                 case 8:
-                    rapporto1[i].caso = 8;
-                    printf("Ore: ");
-                    fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
-                    rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
-                    printf("PMZ o Autoradio: ");
-                    fgets(rapporto1[i].tipo, sizeof(rapporto1[i].tipo), stdin);
-                    rapporto1[i].tipo[strcspn(rapporto1[i].tipo, "\n")] = '\0';
-                    printf("%s: ", rapporto1[i].tipo);
-                    scanf("%d", &rapporto1[i].pmz);
-                    getchar();
+                    if(formaz == 1){
+                        rapporto1[i].caso = 8;
+                        printf("Ore: ");
+                        fgets(rapporto1[i].orario, sizeof(rapporto1[i].orario), stdin);
+                        rapporto1[i].orario[strcspn(rapporto1[i].orario, "\n")] = '\0';
+                        printf("PMZ, Autoradio, Fiamma o Doppia Charlie: ");
+                        fgets(rapporto1[i].tipo, sizeof(rapporto1[i].tipo), stdin);
+                        rapporto1[i].tipo[strcspn(rapporto1[i].tipo, "\n")] = '\0';
+                        printf("%s: ", rapporto1[i].tipo);
+                        scanf("%d", &rapporto1[i].pmz);
+                        getchar();
+                    }else{
+                        printf("non hai formato nessuna pattuglia\n");
+                    }
                     break;
                 case 0:
                     printf("fine rapporto");
