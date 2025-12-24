@@ -4,16 +4,9 @@
     box-sizing: border-box;
 }
 
-#box a{
+#gay{
     display: block;
-    margin: 25px;
-}
-
-#box{
     text-align: center;
-}
-
-#box button{
-    width: 250px;
-    overflow: hidden;
+    align-items: center;
+    height: 100vh;
 }
