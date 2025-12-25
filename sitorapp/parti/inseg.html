@@ -1,6 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Rapporto Semplice/inseguimenti</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapporto Semplice/Inseguimenti</title>
+    <link rel="stylesheet" href="parti.css">
 </head>
+<body>
+    <div id="gay">
+        <div>
+            <label>Orario</label>
+            <input type="time" id="orario">
+        </div>
+        <div>
+            <label>Veicolo</label>
+            <input type="text" id="veicolo">
+        </div>
+        <div>
+            <label>Targa</label>
+            <input type="text" id="targa">
+        </div>
+        <div>
+            <label>civico</label>
+            <input type="text" id="civico">
+        </div>
+        <div>
+            <label>Esito</label>
+            <input type="text" id="esito">
+        </div>
+        <div>
+            <input type="button"  value="Invio" onclick="f1()" id="buttone">
+        </div>
+        <div id="stampazione">
+        </div>
+    <script>
+        function f1(){
+            let orario = document.getElementById("orario").value;
+            let veicolo = document.getElementById("veicolo").value;
+            let targa = document.getElementById("targa").value;
+            let civico = document.getElementById("civico").value;
+            let esito = document.getElementById("esito").value;
+            let stampazione = document.getElementById("stampazione");
+            stampazione.textContent =" - Ore " + orario + " Inseguimento " + veicolo + ", Targa: " + targa + " Civ. " + civico + ", Esito: " + esito;
+        }
+    </script>
+</body>
 </html>

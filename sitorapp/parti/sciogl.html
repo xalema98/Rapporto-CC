@@ -1,6 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Rapporto Semplice/scioglimenti</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapporto Semplice/Formazioni</title>
+    <link rel="stylesheet" href="parti.css">
 </head>
+<body>
+    <div id="gay">
+        <div>
+            <label>Orario</label>
+            <input type="time" id="orario">
+        </div>
+        <div>
+            <label>Pattuglia</label>
+            <input type="text" id="patt">
+        </div>
+        <div>
+            <input type="button" value="Invio" onclick="f1()" value="buttone">
+        </div>
+        <div id="stampazione">
+        </div>
+    </div>
+    <script>
+        opz1.style.display = "none"
+        opz3.style.display = "none"
+        opz2.style.display = "none"
+        function f1(){
+            let orario = document.getElementById("orario").value;
+            let patt = document.getElementById("patt").value;
+            let stampazione = document.getElementById("stampazione");
+            stampazione.textContent = "- Ore " + orario + " sciolta " + patt;
+        }
+    </script>
+</body>
 </html>

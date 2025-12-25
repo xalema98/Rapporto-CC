@@ -1,6 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Rapporto Semplice/rapine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapporto Semplice/Rapine</title>
+    <link rel="stylesheet" href="parti.css">
 </head>
+<body>
+    <div id="gay">
+        <div>
+            <label>Orario</label>
+            <input type="time" id="orario">
+        </div>
+        <div>
+            <label>Civico</label>
+            <input type="text" id="civico">
+        </div>
+        <div>
+            <label>Esito</label>
+            <input type="text" id="esito">
+        </div>
+        <div>
+            <input type="button"  value="Invio" onclick="f1()" id="buttone">
+        </div>
+        <div id="stampazione">
+        </div>
+    <script>
+        function f1(){
+            let orario = document.getElementById("orario").value;
+            let civico = document.getElementById("civico").value;
+            let esito = document.getElementById("esito").value;
+            let stampazione = document.getElementById("stampazione");
+            stampazione.textContent =" - Ore " + orario + " Rapina Civ. " + civico + ", Esito: " + esito;
+        }
+    </script>
+</body>
 </html>

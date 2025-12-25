@@ -1,6 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Rapporto Semplice/fermi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapporto Semplice/Fermi</title>
+    <link rel="stylesheet" href="parti.css">
 </head>
+<body>
+    <div id="gay">
+        <div>
+            <label>Orario</label>
+            <input type="time" id="orario">
+        </div>
+        <div>
+            <label>Veicolo Fermato</label>
+            <input type="text" id="veicolo">
+        </div>
+        <div>
+            <label>Targa</label>
+            <input type="text" id="targa">
+        </div>
+        <div>
+            <label>Nome Soggetto</label>
+            <input type="text" id="nome">
+        </div>
+        <div>
+            <label>Sanzioni Emanate</label>
+            <input type="text" id="sanzioni">
+        </div>
+        <div>
+            <input type="button"  value="Invio" onclick="f1()" id="buttone">
+        </div>
+        <div id="stampazione">
+        </div>
+    <script>
+        function f1(){
+            let orario = document.getElementById("orario").value;
+            let veicolo = document.getElementById("veicolo").value;
+            let targa = document.getElementById("targa").value;
+            let nome = document.getElementById("nome").value;
+            let sanzioni = document.getElementById("sanzioni").value;
+            let stampazione = document.getElementById("stampazione");
+            stampazione.textContent =" - Ore " + orario + " Fermo " + veicolo + ", Targa: " + targa + " Sogg: " + nome + ", Sanzioni Emanate: " + sanzioni;
+        }
+    </script>
+</body>
 </html>

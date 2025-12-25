@@ -1,6 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Rapporto Semplice/formazioni</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapporto Semplice/Formazioni</title>
+    <link rel="stylesheet" href="parti.css">
 </head>
+<body>
+    <div id="gay">
+        <div>
+            <label>Orario</label>
+            <input type="time" id="orario">
+        </div>
+        <div>
+            <label>Pattuglia</label>
+            <input type="text" id="patt">
+        </div>
+        <div>
+            <label>Numero Operatori</label>
+            <input type="text" id="num" oninput="f2()">
+        </div>
+        <div id="opz1">
+            <label>Nome Operatore 1</label>
+            <input type="text" id="op1">
+        </div>
+        <div id="opz2">
+            <label>Nome Operatore 2</label>
+            <input type="text" id="op2">
+        </div>
+        <div id="opz3">
+            <label>Nome Operatore 3</label>
+            <input type="text" id="op3">
+        </div>
+        <div>
+            <input type="button"  value="Invio" onclick="f1()" id="buttone" >
+        </div>
+        <div id="stampazione">
+        </div>
+    </div>
+    <script>
+        opz1.style.display = "none"
+        opz3.style.display = "none"
+        opz2.style.display = "none"
+        function f1(){
+            let orario = document.getElementById("orario").value;
+            let patt = document.getElementById("patt").value;
+            let num = document.getElementById("num").value;
+            let op1 = document.getElementById("op1").value;
+            let op2 = document.getElementById("op2").value;
+            let op3 = document.getElementById("op3").value;
+            let stampazione = document.getElementById("stampazione");
+            if(num == "2"){
+                stampazione.textContent = "- Ore " + orario + " Formata " + patt + " composta da " + op1 + " e " + op2;
+            } else if(num == "3"){
+                stampazione.textContent = "- Ore " + orario + " Formata " + patt + " composta da " + op1 + ", " + op2 + " e " + op3;
+            } else if(num == "0"){
+                let reparto = prompt("Che reparto ha avviato la pattuglia?");
+                stampazione.textContent = reparto + " - Ore " + orario + " Formata " + patt;
+            } else{
+            }
+        }
+        function f2(){
+            let num = document.getElementById("num").value;
+            let opz1 = document.getElementById("opz1");
+            let opz2 = document.getElementById("opz2");
+            let opz3 = document.getElementById("opz3");
+            if(num == 2){
+                opz1.style.display = "block"
+                opz2.style.display = "block"
+            }else if(num == 3){
+                opz1.style.display = "block"
+                opz2.style.display = "block"
+                opz3.style.display = "block"
+            }
+        }
+    </script>
+</body>
 </html>
