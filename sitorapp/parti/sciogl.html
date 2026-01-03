@@ -13,11 +13,7 @@
             <input type="time" id="orario" style="background-color: white;">
         </div>
         <div>
-            <label>Pattuglia</label>
-            <input type="text" id="patt" style="background-color: white;">
-        </div>
-        <div>
-            <input type="button" value="Invio" onclick="f1()" value="buttone" style="background-color: white;">
+            <input type="button" value="Invio" onclick="f1(); f3()" value="buttone" style="background-color: white;">
         </div>
         <div id="stampazione"></div>
         <div>
@@ -25,14 +21,22 @@
         </div>
     </div>
     <script>
-        opz1.style.display = "none"
-        opz3.style.display = "none"
-        opz2.style.display = "none"
+        let formata = localStorage.getItem("formata") ?? 0;
+        const script = document.createElement("script");
+        script.src = "resoconto.js";
+        document.head.appendChild(script);
         function f1(){
-            let orario = document.getElementById("orario").value;
-            let patt = document.getElementById("patt").value;
-            let stampazione = document.getElementById("stampazione");
-            stampazione.textContent = "- Ore " + orario + " sciolta " + patt;
+            if (formata != 0 && formata != ""){
+                let patt = localStorage.getItem("patt");
+                formata = 0;
+                localStorage.setItem("formata", formata);
+                let orario = document.getElementById("orario").value;
+                let stampazione = document.getElementById("stampazione");
+                let motivo = prompt("Perchè si è sciolta la pattuglia?");
+                stampazione.textContent = "- Ore " + orario + " sciolta " + patt + " per " + motivo;
+            }else{
+                alert("Non hai ancora formato una pattuglia");
+            }
         }
     </script>
 </body>

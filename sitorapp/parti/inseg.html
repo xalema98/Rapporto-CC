@@ -29,7 +29,7 @@
             <input type="text" id="esito" style="background-color: white;">
         </div>
         <div>
-            <input type="button"  value="Invio" onclick="f1()" id="buttone" style="background-color: white;">
+            <input type="button"  value="Invio" onclick="f1(); f3()" id="buttone" style="background-color: white;">
         </div>
         <div id="stampazione">
         </div>
@@ -38,6 +38,9 @@
         </div>
     <script>
         function f1(){
+        const script = document.createElement("script");
+        script.src = "resoconto.js";
+        document.head.appendChild(script);
             let orario = document.getElementById("orario").value;
             let veicolo = document.getElementById("veicolo").value;
             let targa = document.getElementById("targa").value;

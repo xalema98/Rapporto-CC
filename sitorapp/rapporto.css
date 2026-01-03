@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     background-color: rgb(142, 193, 225);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #box a{
@@ -18,6 +19,10 @@
 }
 
 #box button{
+    width: 250px;
+    overflow: hidden;
+}
+#box input{
     width: 250px;
     overflow: hidden;
 }

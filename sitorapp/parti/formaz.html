@@ -33,7 +33,7 @@
             <input type="text" id="op3" style="background-color: white;">
         </div>
         <div>
-            <input type="button"  value="Invio" onclick="f1()" id="buttone" style="background-color: white;">
+            <input type="button"  value="Invio" onclick="f1(); f3(); f5()" id="buttone" style="background-color: white;">
         </div>
         <div id="stampazione"></div>
         <div>
@@ -41,25 +41,39 @@
         </div>
     </div>
     <script>
+        const script = document.createElement("script");
+        script.src = "resoconto.js";
+        document.head.appendChild(script);
         opz1.style.display = "none"
         opz3.style.display = "none"
         opz2.style.display = "none"
         function f1(){
-            let orario = document.getElementById("orario").value;
-            let patt = document.getElementById("patt").value;
-            let num = document.getElementById("num").value;
-            let op1 = document.getElementById("op1").value;
-            let op2 = document.getElementById("op2").value;
-            let op3 = document.getElementById("op3").value;
-            let stampazione = document.getElementById("stampazione");
-            if(num == "2"){
-                stampazione.textContent = "- Ore " + orario + " Formata " + patt + " composta da " + op1 + " e " + op2;
-            } else if(num == "3"){
-                stampazione.textContent = "- Ore " + orario + " Formata " + patt + " composta da " + op1 + ", " + op2 + " e " + op3;
-            } else if(num == "0"){
-                let reparto = prompt("Che reparto ha avviato la pattuglia?");
-                stampazione.textContent = reparto + " - Ore " + orario + " Formata " + patt;
-            } else{
+            let formata = localStorage.getItem("formata") ?? 0;
+            if (formata == 0){
+                formata = 1;
+                localStorage.setItem("formata", formata);
+                let orario = document.getElementById("orario").value;
+                let patt = document.getElementById("patt").value;
+                let num = document.getElementById("num").value;
+                let op1 = document.getElementById("op1").value;
+                let op2 = document.getElementById("op2").value;
+                let op3 = document.getElementById("op3").value;
+                let stampazione = document.getElementById("stampazione");
+                if(num == "2"){
+                    stampazione.textContent = "- Ore " + orario + " Formata " + patt + " composta da " + op1 + " e " + op2;
+                    localStorage.setItem("patt", patt);
+                }else if(num == "3"){
+                    stampazione.textContent = "- Ore " + orario + " Formata " + patt + " composta da " + op1 + ", " + op2 + " e " + op3;
+                    localStorage.setItem("patt", patt);
+                }else if(num == "0"){
+                    let reparto = prompt("Che reparto ha avviato la pattuglia?");
+                    stampazione.textContent = reparto + " - Ore " + orario + " Formata " + patt;
+                    localStorage.setItem("patt", patt);
+                }else{
+                    alert("Hai inserito un numero di operatori sbagliato")
+                }
+            }else{
+                alert("Hai già formato una pattuglia")
             }
         }
         function f2(){
@@ -74,6 +88,10 @@
                 opz1.style.display = "block"
                 opz2.style.display = "block"
                 opz3.style.display = "block"
+            }else{
+                opz1.style.display = "none"
+                opz3.style.display = "none"
+                opz2.style.display = "none"
             }
         }
     </script>

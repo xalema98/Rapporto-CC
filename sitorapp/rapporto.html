@@ -19,6 +19,21 @@
         <a href="parti/CUFA.html"><button style="background-color: white;">Controlli forestali</button></a>
         <a href="parti/sciogl.html"><button style="background-color: white;">Scioglimento PMZ/autoradio/Fiamma/Doppia Charlie</button></a>
         <a href="parti/fine.html"><button style="background-color: white;">Resoconto Rapporto</button></a>
-        </div>
+        <input type="button" value="Svuota Memoria" id="buttone" onclick="f1()" style="background-color: white;">
+    </div>
+    <script>
+        let pieno = localStorage.getItem("resoconto") ?? 0;
+        if(pieno != 0){
+            buttone.style.visibility = "visible";
+        }else{
+            buttone.style.visibility = "hidden";
+        }
+       function f1(){
+            localStorage.removeItem("resoconto");
+            localStorage.removeItem("patt");
+            localStorage.removeItem("formata");
+            buttone.style.visibility = "hidden"
+        } 
+    </script>
 </body>
 </html>
